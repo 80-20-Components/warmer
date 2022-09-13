@@ -115,7 +115,6 @@
         },
         "patches": {
             "drupal/warmer": {
-                "#3309435: Update to remove regressions introduced with #3309129, update tests to use claro theme":"https://git.drupalcode.org/project/warmer/-/merge_requests/9.patch"
             }
         }
     },
