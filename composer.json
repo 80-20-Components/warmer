@@ -115,6 +115,7 @@
         },
         "patches": {
             "drupal/warmer": {
+                "#3309435: Update to remove regressions introduced in #3309120, update EnqueueFormTest to use \"claro\" them for testing": "https://git.drupalcode.org/project/warmer/-/merge_requests/8.patch"
             }
         }
     },
