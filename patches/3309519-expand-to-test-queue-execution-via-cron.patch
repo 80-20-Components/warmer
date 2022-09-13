@@ -1,0 +1,22 @@
+diff --git a/modules/warmer_entity/tests/src/Functional/EnqueueFormTest.php b/modules/warmer_entity/tests/src/Functional/EnqueueFormTest.php
+index c40385f..91aa5cb 100644
+--- a/modules/warmer_entity/tests/src/Functional/EnqueueFormTest.php
++++ b/modules/warmer_entity/tests/src/Functional/EnqueueFormTest.php
+@@ -73,6 +73,17 @@ class EnqueueFormTest extends BrowserTestBase {
+     $queue = \Drupal::service('queue')->get('warmer');
+     assert($queue instanceof QueueInterface);
+     $this->assertSame(1, $queue->numberOfItems(), 'Correct number of batches in the queue.');
++    // Execute cron to clear queued items
++    $this->drupalGet(URL::fromRoute('system.cron_settings'));
++    $this->submitForm([], 'edit-run', 'system-cron-settings');
++    // Check that cron ran successfully
++    $elements = $this->cssSelect('div.messages');
++    $element = reset($elements);
++    $this->assertEquals($element->getText(), 'Status message Cron ran successfully.');
++    // Ensure there are no batches in the queue
++    $queue = \Drupal::service('queue')->get('warmer');
++    assert($queue instanceof QueueInterface);
++    $this->assertSame(0, $queue->numberOfItems(), 'Correct number of batches in the queue.');
+   }
+ 
+   /**

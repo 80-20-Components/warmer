@@ -19,7 +19,6 @@
         "cweagans/composer-patches": "^1.7",
         "drupal/core-composer-scaffold": "^9.4",
         "drupal/core-recommended": "^9.4",
-        "drupal/queue_ui": "^3.1",
         "drupal/warmer": "2.x-dev",
         "drush/drush": "^11.0",
         "oomphinc/composer-installers-extender": "^2.0",
@@ -115,7 +114,8 @@
         },
         "patches": {
             "drupal/warmer": {
-                "#3309435: Update to remove regressions introduced in #3309120, update EnqueueFormTest to use \"claro\" them for testing": "https://git.drupalcode.org/project/warmer/-/merge_requests/8.patch"
+                "#3309435: Update to remove regressions introduced in #3309120, update EnqueueFormTest to use \"claro\" them for testing": "https://git.drupalcode.org/project/warmer/-/merge_requests/8.patch",
+                "#3309519: Expand original test to test queue execution via cron": "patches/3309519-expand-to-test-queue-execution-via-cron.patch"
             }
         }
     },
